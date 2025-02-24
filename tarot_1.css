@@ -3,7 +3,7 @@ body {
     background-color: #1a1a1a;
     color: #f5f5f5;
     text-align: center;
-    padding: 20px;
+    padding: 20%;
     background: url(purple-space-backgroound.jpg);
 }
 
@@ -14,12 +14,12 @@ p {
 
 #start-screen, #reading-screen {
     
-    max-width: 600px;
+    max-width: 100%;
     margin: auto;
     padding: 20px;
     background: rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
-    box-shadow: 0 0 25px rgba(2, 1, 1, 0.2);
+    border-radius: 10%;
+    box-shadow: 0 0 50% rgba(2, 1, 1, 0.2);
   
     position: sticky;
 }
