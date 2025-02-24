@@ -1,10 +1,9 @@
 document.addEventListener("DOMContentLoaded", function () {
-  
   document.getElementById("start-btn").addEventListener("click", function () {
     document.getElementById("start-screen").style.display = "none";
     document.getElementById("reading-screen").style.display = "block";
   });
-
+  //Add all the tarot cards
   const tarotDeck = [
     {
       name: "The Fool",
@@ -479,14 +478,14 @@ document.addEventListener("DOMContentLoaded", function () {
     },
   ];
 
- // One card spread button
+  // One card spread button
   document
     .getElementById("one-card-btn")
     .addEventListener("click", function () {
       startReading(1);
     });
 
-    // Three card spread button
+  // Three card spread button
 
   document
     .getElementById("three-card-btn")
@@ -495,25 +494,24 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
   // Redraw button. Displays a new reading
-    document.getElementById("redraw-btn")
-        .addEventListener("click", function () {
-       startReading(currentNumCards); 
+  document.getElementById("redraw-btn").addEventListener("click", function () {
+    startReading(currentNumCards);
   });
 
-    // Restart Reading button that takes you back to picking a spread
-    document.getElementById("restart-btn")
-        .addEventListener('click', function () {
-            resetReading();
-    })
-  let currentNumCards = 1; // Default to one card reading
+  // Restart Reading button that takes you back to picking a spread
+  document.getElementById("restart-btn").addEventListener("click", function () {
+    resetReading();
+  });
+  // Default to one card spread
+  let currentNumCards = 1;
 
   function startReading(numCards) {
-    currentNumCards = numCards; // Store the number of cards drawn for reshuffling
+    currentNumCards = numCards; 
     let tarotCardsDiv = document.getElementById("tarot-cards");
     tarotCardsDiv.innerHTML = "";
 
-    // Shuffle without modifying the original array
-    let shuffledDeck = tarotDeck.slice().sort(() => Math.random() - 0.5);
+    // Shuffle without changes to deck array
+    let shuffledDeck = tarotDeck.slice().sort(() => Math.random() - .5);
     let drawnCards = shuffledDeck.slice(0, numCards);
 
     drawnCards.forEach((card) => {
@@ -521,18 +519,15 @@ document.addEventListener("DOMContentLoaded", function () {
       cardElement.classList.add("tarot-card");
       cardElement.innerHTML = `<img src="${card.image}" alt="${card.name}"><B>${card.name}</B><p>${card.meaning}</p> `;
       cardElement.addEventListener("click", function () {
-          alert(`${card.name}: ${card.details}`);
-
-          
-          
+        alert(`${card.name}: ${card.details}`);
       });
       tarotCardsDiv.appendChild(cardElement);
     });
   }
 
   function resetReading() {
-      document.getElementById("tarot-cards").innerHTML = "";
-      document.getElementById("start-screen").style.display = "block";
-      document.getElementById("reading-screen").style.display = "none";
+    document.getElementById("tarot-cards").innerHTML = "";
+    document.getElementById("start-screen").style.display = "block";
+    document.getElementById("reading-screen").style.display = "none";
   }
 });
